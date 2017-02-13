@@ -19,6 +19,7 @@ class WrapHandler(web.RequestHandler):
         width = self.get_argument('width', 40)
         self.write(textwrap.fill(text, int(width)))
 
+
 if __name__ == '__main__':
     options.parse_command_line()
     app = web.Application(
