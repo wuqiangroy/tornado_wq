@@ -5,6 +5,9 @@ from tornado import httpserver, ioloop, options, web
 import textwrap
 
 
+options.define('port', default=5000, help='run on this given port', type=int)
+
+
 class ReverseHandler(web.RequestHandler):
     def get(self, input):
         self.write(input[::-1])
@@ -16,7 +19,7 @@ class WrapHandler(web.RequestHandler):
         width = self.get_argument('width', 40)
         self.write(textwrap.fill(text, int(width)))
 
-if __name__ == '__mian__':
+if __name__ == '__main__':
     options.parse_command_line()
     app = web.Application(
         handlers=[

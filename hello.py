@@ -9,7 +9,7 @@ options.define('port', default=8000, help='run on the given port', type=int)
 
 class IndexHandler(web.RequestHandler):
     def get(self):
-        greeting = self.get_argument('greeting', 'Hello')
+        greeting = self.get_argument('greeting', 'hello')
         self.write(greeting + ', friendly user!')
 
 
