@@ -9,7 +9,7 @@ options.define('port', default=8000, help='run on the given port', type=int)
 
 class Application(web.Application):
     def __init__(self):
-        handlers = [r'/(\w+)', WordHandler]
+        handlers = [(r'/(\w+)', WordHandler)]
         conn = pymongo.MongoClient('localhost', 27017)
         self.db = conn['example']
         web.Application.__init__(self, handlers, debug=True)
