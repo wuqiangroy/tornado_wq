@@ -22,4 +22,3 @@ if __name__ == '__main__':
     http_server = httpserver.HTTPServer(app)
     http_server.listen(options.options.port)
     ioloop.IOLoop.instance().start()
-    
