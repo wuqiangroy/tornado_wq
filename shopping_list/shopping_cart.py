@@ -98,7 +98,7 @@ class Application(web.Application):
             'static_path': 'static'
         }
 
-        web.Application.__init__(self,handlers, **setting)
+        web.Application.__init__(self, handlers, **setting)
 
 if __name__ == '__main__':
     options.parse_command_line()
