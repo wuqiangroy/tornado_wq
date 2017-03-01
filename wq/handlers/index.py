@@ -2,13 +2,15 @@
 # _*_ coding:utf-8 _*_
 
 from tornado import web
-from ..methods.db import select_table
+from ..methods.db import select_table, select_columns
 
 
 class IndexHandler(web.RequestHandler):
 
     def get(self):
-        self.render('index.html')
+        usernames = select_columns(table='users', column='username')
+        one_user = usernames[0][0]
+        self.render('index.html', user=one_user)
 
     def post(self):
         username = self.get_argument('username')
