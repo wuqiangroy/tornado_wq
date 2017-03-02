@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-cn">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <meta name="viewpoint" content="width=device-width, initial-scale=1" />
+    <title>WQ - Info</title>
 </head>
 <body>
-$END$
+    <h2>Your informations are:</h2>
+    <ur>
+        {% for user in users %}
+            <li>username:{{ user[1] }}</li>
+            <li>password:{{ user[2] }}</li>
+            <li>email:{{ user[3] }}</li>
+        {% end %}
+    </ur>
+
 </body>
 </html>
