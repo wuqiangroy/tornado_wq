@@ -1,11 +1,12 @@
 #!/usr/bin/env python
 # _*_ coding:utf-8 _*_
 
-from tornado import web
+from tornado import escape
+from .base import BaseHandler
 from ..methods.db import select_table, select_columns
 
 
-class IndexHandler(web.RequestHandler):
+class IndexHandler(BaseHandler):
 
     def get(self):
         usernames = select_columns(table='users', column='username')
@@ -23,9 +24,22 @@ class IndexHandler(web.RequestHandler):
                 # 明文存cookie
                 # self.set_cookie(username, db_pwd)
                 # 密文存, 获取直接用self.get_secure_cookie(username)
-                self.set_secure_cookie(username, db_pwd)
+                self.set_secure_cookie(username)
                 self.write(username)
             else:
                 self.write('Sorry, your password is wrong!')
         else:
             self.write('This user is not exist.')
+
+    def set_current_user(self, user):
+        if user:
+            self.set_secure_cookie('user', escape.json_encode(user))
+        else:
+            self.write('-1')
+
+
+class ErrorHandler(BaseHandler):
+
+    def get(self):
+        self.render('error.html')
+
