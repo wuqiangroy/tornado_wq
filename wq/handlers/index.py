@@ -20,7 +20,11 @@ class IndexHandler(web.RequestHandler):
         if user_infos:
             db_pwd = user_infos[0][2]
             if db_pwd == password:
-                self.write('Welcome you:' + username)
+                # 明文存cookie
+                # self.set_cookie(username, db_pwd)
+                # 密文存, 获取直接用self.get_secure_cookie(username)
+                self.set_secure_cookie(username, db_pwd)
+                self.write(username)
             else:
                 self.write('Sorry, your password is wrong!')
         else:
