@@ -2,6 +2,11 @@
  * Created by wuqia on 2017/2/28.
  */
 
+ function getCookie(name){
+    var x = document.cookie.match("\\b" + name + "=([^;]*)\\b");
+    return x ? x[1]:undefined;
+}
+
 $(document).ready(function(){
     $("#login").click(function(){
         var user = $("#username").val();
