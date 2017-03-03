@@ -10,6 +10,7 @@ settings = {
     'static_path': os.path.join(os.path.dirname(__file__), 'statics'),
     'cookie_secret': "Qdbk+l5DSz6XOw9zBCSYKA==",
     'xsrf_cookies': True,
+    'login_url': '/',
 }
 
 application = web.Application(
