@@ -2,7 +2,7 @@
 # _*_ coding:utf-8 _*_
 
 from tornado import escape, web
-from .base import BaseHandler
+from base import BaseHandler
 from ..methods.db import select_table
 
 
